@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<title>Slide Button</title>
+	<script type="text/javascript"
+          	src="file:///opt/PalmSDK/Current/share/refcode/framework/enyo/1.0/framework/enyo.js">
+	</script>
+	<style type="text/css">
+#app {
+	padding: 20px;
+}
+	</style>
+	<script type="text/javascript">
+
+(function() {
+	enyo.kind({
+		name: "App",
+		kind: "VFlexBox",
+		components: [
+			{kind: 'SlideLock', caption: 'Slide to unlock...', onUnlock: 'unlocking', onSliding: 'sliding', onCancel: 'cancelling' },
+			{name: 'message', content: 'locked'}
+		],
+		unlocking: function() {
+			this.$.message.setContent('unlocked!')
+		},
+		sliding: function() {
+			this.$.message.setContent('sliding');
+		},
+		cancelling: function() {
+			this.$.message.setContent('still locked');
+		}
+	});
+})();
+
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+
+  (function() {
+    new App().renderInto(document.body);
+  })();
+
+</script>
+</body>
+</html>
