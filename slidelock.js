@@ -49,7 +49,7 @@
     canDrag: function(e) {
       var target = e.dispatchTarget;
       return (!this.unlocked && e.horizontal &&
-        target == this.$.button || target.owner == this.$.button);
+        (target == this.$.button || target.owner == this.$.button));
     },
 
     dragHandler: function(sender, e) {
