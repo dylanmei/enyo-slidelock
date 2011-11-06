@@ -47,7 +47,9 @@
     },
 
     canDrag: function(e) {
-      return (!this.unlocked && e.horizontal && e.dispatchTarget == this.$.button);
+      var target = e.dispatchTarget;
+      return (!this.unlocked && e.horizontal &&
+        target == this.$.button || target.owner == this.$.button);
     },
 
     dragHandler: function(sender, e) {
@@ -95,7 +97,7 @@
     slidingHandler: true,
     allowDrag: true,
     components: [
-      {name: "symbol", className: "slidelock-button-symbol"},
+      {name: "symbol", className: 'slidelock-button-symbol'},
     ],
     grab: function() {
       this.setDown(true);
